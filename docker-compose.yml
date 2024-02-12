@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:16.0-alpine
+    container_name: 'postgres-miner'
+    volumes:
+      - postgre_db:/var/lib/postgresql/data
+    env_file:
+      - ./backend/.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    container_name: 'backend'
+    build: ./backend
+    env_file:
+      - ./backend/.env
+    command: gunicorn app:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000
+    depends_on:
+      - postgres
+    restart: on-failure
+
+  nginx:
+    image: nginx:latest
+    container_name: 'nginx-miner'
+    volumes:
+      - ./infra/nginx:/etc/nginx/conf.d:ro
+    depends_on:
+      - backend
+    ports:
+      - "80:80"
+
+volumes:
+  postgre_db:
