@@ -16,6 +16,12 @@
 
 ```./create_migration.sh```
 
+[Ссылка на игру](https://minesweeper-test.studiotg.ru/)
+
+В поле URL API необходимо ввести:
+
+```http://localhost```
+
 Для последующих запусков проекта:
 
 ```docker-compose up -d --build```
