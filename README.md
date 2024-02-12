@@ -6,6 +6,10 @@
 
 ```git clone https://github.com/AndreyMamaev/miner.git```
 
+Перейти в директорию проекта:
+
+```cd miner```
+
 Создать /backend/.env файл (по образцу .envexample)
 
 Создать контейнеры:
