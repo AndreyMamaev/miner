@@ -6,7 +6,7 @@
 
 ```git clone git@github.com:AndreyMamaev/miner.git```
 
-Создать /backend/.env файл (по образцу .env/example)
+Создать /backend/.env файл (по образцу .envexample)
 
 Создать контейнеры:
 
