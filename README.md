@@ -18,7 +18,8 @@
 
 Выполнить миграции:
 
-```./create_migration.sh```
+```docker-compose exec backend alembic revision --autogenerate -m "create_table"```
+```docker-compose exec backend alembic upgrade head```
 
 [Ссылка на игру](https://minesweeper-test.studiotg.ru/)
 
